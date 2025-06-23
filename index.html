@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Puzzle Game</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .game-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .puzzle-area {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            min-height: 100px;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        input, button {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #hint-btn {
+            background-color: #f39c12;
+        }
+        #hint-btn:hover {
+            background-color: #d35400;
+        }
+        #message {
+            margin: 10px 0;
+            min-height: 20px;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .score {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        .word-display {
+            font-size: 1.5em;
+            letter-spacing: 5px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .scrambled {
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        .hint {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Word Puzzle Game</h1>
+        
+        <div class="score">
+            Score: <span id="score">0</span> | 
+            Puzzles Solved: <span id="solved">0</span>
+        </div>
+        
+        <div class="puzzle-area">
+            <div id="message"></div>
+            <div class="word-display">
+                <span id="scrambled-word" class="scrambled"></span>
+            </div>
+            <div id="hint" class="hint"></div>
+        </div>
+        
+        <div class="controls">
+            <input type="text" id="guess-input" placeholder="Your guess...">
+            <button id="submit-guess">Submit</button>
+            <button id="hint-btn">Hint</button>
+            <button id="new-puzzle">New Puzzle</button>
+        </div>
+    </div>
+
+    <script>
+        // Word bank in JSON format 
+        const wordBank = {
+            "words": [
+                {
+                    "word": "javascript",
+                    "hint": "The programming language this game is written in"
+                },
+                {
+                    "word": "html",
+                    "hint": "Markup language for creating web pages"
+                },
+                {
+                    "word": "css",
+                    "hint": "Stylesheet language for describing presentation"
+                },
+                {
+                    "word": "algorithm",
+                    "hint": "A set of rules to solve a problem in steps"
+                },
+                {
+                    "word": "variable",
+                    "hint": "Container for storing data values"
+                },
+                {
+                    "word": "function",
+                    "hint": "Block of code designed to perform a particular task"
+                },
+                {
+                    "word": "browser",
+                    "hint": "Software application for accessing the web"
+                },
+                {
+                    "word": "debugging",
+                    "hint": "Process of finding and fixing errors in code"
+                },
+                {
+                    "word": "framework",
+                    "hint": "Platform for developing software applications"
+                },
+                {
+                    "word": "responsive",
+                    "hint": "Design that adapts to different screen sizes"
+                }
+            ]
+        };
+
+        // Game state
+        let currentWord = "";
+        let scrambledWord = "";
+        let currentHint = "";
+        let score = 0;
+        let puzzlesSolved = 0;
+        let hintUsed = false;
+
+        // DOM elements
+        const scrambledWordElement = document.getElementById('scrambled-word');
+        const hintElement = document.getElementById('hint');
+        const messageElement = document.getElementById('message');
+        const guessInput = document.getElementById('guess-input');
+        const scoreElement = document.getElementById('score');
+        const solvedElement = document.getElementById('solved');
+
+        // Initialize game
+        document.addEventListener('DOMContentLoaded', () => {
+            newPuzzle();
+            
+            // Event listeners
+            document.getElementById('submit-guess').addEventListener('click', checkGuess);
+            document.getElementById('hint-btn').addEventListener('click', showHint);
+            document.getElementById('new-puzzle').addEventListener('click', newPuzzle);
+            guessInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') checkGuess();
+            });
+        });
+
+        // Scramble a word
+        function scrambleWord(word) {
+            let letters = word.split('');
+            for (let i = letters.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [letters[i], letters[j]] = [letters[j], letters[i]];
+            }
+            return letters.join('');
+        }
+
+        // Start a new puzzle
+        function newPuzzle() {
+            hintUsed = false;
+            hintElement.textContent = '';
+            messageElement.textContent = '';
+            guessInput.value = '';
+            
+            // Select random word
+            const randomIndex = Math.floor(Math.random() * wordBank.words.length);
+            currentWord = wordBank.words[randomIndex].word.toLowerCase();
+            currentHint = wordBank.words[randomIndex].hint;
+            
+            // Scramble the word (ensure it's not the same as original)
+            do {
+                scrambledWord = scrambleWord(currentWord);
+            } while (scrambledWord === currentWord);
+            
+            scrambledWordElement.textContent = scrambledWord;
+        }
+
+        // Check the player's guess
+        function checkGuess() {
+            const guess = guessInput.value.trim().toLowerCase();
+            
+            if (!guess) {
+                showMessage("Please enter a guess!");
+                return;
+            }
+            
+            if (guess === currentWord) {
+                // Correct guess
+                let points = hintUsed ? 5 : 10;
+                score += points;
+                puzzlesSolved++;
+                
+                showMessage(`Correct! +${points} points`, 'success');
+                scoreElement.textContent = score;
+                solvedElement.textContent = puzzlesSolved;
+                
+                // Show the correct word briefly
+                scrambledWordElement.textContent = currentWord;
+                scrambledWordElement.style.color = '#27ae60';
+                
+                // Load new puzzle after delay
+                setTimeout(newPuzzle, 1500);
+            } else {
+                // Incorrect guess
+                showMessage("Incorrect, try again!");
+                guessInput.value = '';
+                guessInput.focus();
+            }
+        }
+
+        // Show a hint
+        function showHint() {
+            if (!hintUsed) {
+                hintElement.textContent = currentHint;
+                score = Math.max(0, score - 2); // Deduct 2 points for hint
+                scoreElement.textContent = score;
+                hintUsed = true;
+            } else {
+                showMessage("You've already used your hint for this puzzle!");
+            }
+        }
+
+        // Display messages to the player
+        function showMessage(msg, type = 'error') {
+            messageElement.textContent = msg;
+            messageElement.style.color = type === 'error' ? '#e74c3c' : '#27ae60';
+            
+            // Clear message after 3 seconds
+            if (type !== 'error') {
+                setTimeout(() => {
+                    messageElement.textContent = '';
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>

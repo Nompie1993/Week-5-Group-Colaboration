@@ -57,19 +57,29 @@ Verify that:
 
 ### 2.1 Risk Matrix  
 ```markdown
-| ID  | Feature        | Risk                          | Likelihood | Impact | Priority | Mitigation Strategy          |  
-|-----|----------------|-------------------------------|------------|--------|----------|------------------------------|  
-| R1  | Scoring        | Incorrect point calculation   | Medium     | High   | Critical | Boundary value testing       |  
-|     |                |                               |            |        |          |                              | 
+| ID  | Feature             | Risk Description                                                      | Likelihood | Impact | Priority | Mitigation Strategy                        |  
+|-----|---------------------|-----------------------------------------------------------------------|------------|--------|----------|--------------------------------------------|  
+| R1  | Scoring System      | Incorrect point calculation; score not deducted on new puzzle; score does not go negative | Medium     | High   | Critical | Boundary value testing, review logic       |  
+| R2  | Navigation          | No ability to return to previous questions                            | Low        | Low    | Medium   | Clarify requirements, document as known gap|  
+| R3  | Puzzle Selection    | Duplicate word puzzles appear                                         | Medium     | Medium | High     | Track used puzzles, test for uniqueness    |  
+| R4  | Score Persistence   | Refresh resets score and game state                                   | High       | Medium | High     | Use local storage, test persistence        |  
+| R5  | Puzzle Consistency  | Refresh at score 0 changes puzzle instead of retaining original       | Medium     | Low    | Medium   | Store current puzzle in local storage      |  
+| R6  | Attempt Tracking    | Number of attempts for each puzzle not displayed                      | Medium     | Low    | Medium   | Add attempt counter, test UI feedback      |  
 ```
 
 ### 2.2 Risk Coverage  
+```markdown
+Risk coverage was measured using Chrome DevTools Coverage.  
+All high and medium priority features (scoring, word bank, hint system, puzzle selection, and persistence) were exercised through manual and automated test cases, with DevTools confirming that the relevant JavaScript code paths were executed.  
+Console monitoring and exploratory testing ensured that error handling and edge cases were also covered.  
+Some lower-priority risks (navigation and attempt tracking) remain partially uncovered due to scope and tool limitations, but all critical risks are addressed.
+```
 ```mermaid  
 pie  
     title Risk Coverage  
-    "Covered by Tests" :50   
-    "Uncovered Risks" :50   
-```  
+    "Covered by Tests (DevTools Coverage)" :71.5   
+    "Uncovered Risks" :28.5  
+```   
 
 ---
 
@@ -196,22 +206,46 @@ pie
 
 ### 4.1 GitHub Issue Links  
 ```markdown
-1. [#1: Score Accumulation Bug](https://github.com/your-repo/issues/1)  
+1. [#1: Score Not Deducted on New Puzzle](https://github.com/LusandaMO/Week-5-Group-Colaboration/issues/1)  
    - **Severity**: High  
-   - **Risk Impact**: R1 (Scoring system)  
+   - **Risk Impact**: R1 (Scoring System)  
 
-2. [#2: Empty Input Accepted](https://github.com/your-repo/issues/2)  
+2. [#2: Cannot Navigate to Previous Questions](https://github.com/LusandaMO/Week-5-Group-Colaboration/issues/2)  
    - **Severity**: Medium  
-   - **Risk Impact**: R2 (Input validation)  
+   - **Risk Impact**: R2 (Navigation)  
+
+3. [#3: Duplicate Word Puzzles](https://github.com/LusandaMO/Week-5-Group-Colaboration/issues/3)  
+   - **Severity**: Medium  
+   - **Risk Impact**: R3 (Puzzle Selection)  
+
+4. [#4: Score Resets on Refresh](https://github.com/LusandaMO/Week-5-Group-Colaboration/issues/4)  
+   - **Severity**: High  
+   - **Risk Impact**: R4 (Score Persistence)  
+
+5. [#5: Score Does Not Go Negative on Incorrect Answer](https://github.com/LusandaMO/Week-5-Group-Colaboration/issues/5)  
+   - **Severity**: Low  
+   - **Risk Impact**: R1 (Scoring System)  
+
+6. [#6: Puzzle Changes on Refresh at Score 0](https://github.com/LusandaMO/Week-5-Group-Colaboration/issues/6)  
+   - **Severity**: Medium  
+   - **Risk Impact**: R5 (Puzzle Consistency)  
+
+7. [#7: Attempt Count Not Displayed](https://github.com/LusandaMO/Week-5-Group-Colaboration/issues/7)  
+   - **Severity**: Low  
+   - **Risk Impact**: R6 (Attempt Tracking)  
 ```
 
 ### 4.2 Defect Summary  
 ```markdown
-| ID  | Defect Type          | Test Case Affected | Description                              | Status   |  
-|-----|----------------------|--------------------|------------------------------------------|----------|  
-| 1   | UI/Logic Error       | TC-02              | Hint button remains enabled after use, allowing multiple point deductions | Open     |  
-| 2   | Visual Feedback      | TC-02              | No visual indication when hint is used   | Open     |  
-| 3   | Edge Case Handling   | TC-01              | Potential infinite loop if word length < 2 (unlikely but possible) | Open     |                      |                    |          |  
+| ID  | Defect Type          | Test Case Affected | Description                                                      | Status   |  
+|-----|----------------------|--------------------|------------------------------------------------------------------|----------|  
+| 1   | Scoring Logic        | TC-01, TC-05       | Score not deducted when new puzzle is presented                  | Open     |  
+| 2   | Navigation Limitation| TC-06              | No ability to return to previous questions                       | Open     |  
+| 3   | Puzzle Duplication   | TC-02              | Duplicate word puzzles appear                                    | Open     |  
+| 4   | Persistence Error    | TC-05              | Refreshing page resets score and game state                      | Open     |  
+| 5   | Scoring Logic        | TC-04              | Score does not go negative after incorrect answers               | Open     |  
+| 6   | Puzzle Consistency   | TC-05              | Refresh at score 0 changes puzzle instead of retaining original  | Open     |  
+| 7   | Attempt Tracking     | TC-07              | Number of attempts for each puzzle not displayed                 | Open     |  
 ```
 
 ---
