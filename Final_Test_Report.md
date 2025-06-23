@@ -149,32 +149,7 @@ pie
 **Expected**: Score resets to zero after refresh.  
 **Risk Priority**: High  
 
-
-### 3.2 Edge Cases
-
-#### **TC-09: Repeated Hint Usage**
-**Description**: Test multiple hint clicks  
-**Steps**:
-1. Click "Hint" button 3 times  
-**Expected**:  
-- Only deducts 2 points once  
-- Shows "Already used hint" message  
-**Actual**: Multiple hint clicks → Only deducted points once, but didn’t disable the button  
-**Status**: Fail  
-
----
-
-#### **TC-10: Case-Insensitive Guess**
-**Description**: Test mixed-case input  
-**Steps**:
-1. For word "LOVE", submit "LoVe"  
-**Expected**:  
-- Accepts as correct answer  
-- Awards full points  
-**Actual**: Accepted mixed-case answers  
-**Status**: Pass  
-
----
+----
 
 ## 🐞 **4. Defect Reports**  
 
