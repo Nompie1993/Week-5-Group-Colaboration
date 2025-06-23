@@ -86,95 +86,69 @@ pie
 ## 🧪 **3. Test Cases**  
 ### 3.1 High-Priority Tests (Risk-Based)
 
-#### **TC-01: Hint Point Deduction**
-**Description**: Verify score is reduced when using a hint  
-**Steps**:
-1. Solve puzzle without hint → Score = 10  
-2. Solve identical puzzle with hint  
-**Expected**: Score = 8 (10 - 2 point deduction)  
-**Actual**: Score increased by 5 (10 - 2 deduction = 8 net gain)  
-**Status**: Pass  
+**ID**: TC-01  
+**Feature**: Scoring System  
+**Test**: Verify score deduction when using hint  
+**Steps**:  
+1. Start a new puzzle.  
+2. Solve the puzzle without using the hint and note the score (should increase by 10).  
+3. Start another new puzzle.  
+4. Use the hint, then solve the puzzle and note the score (should increase by 8: 10 - 2 for hint).  
+
+**Expected**: Using a hint deducts 2 points from the score for that puzzle.  
+**Risk Priority**: High  
 
 ---
 
-#### **TC-02: Word Scrambling Validation**  
-**Description**: Ensure scrambled word never matches original  
-**Steps**:
-1. Call `scrambleWord("javascript")` 100 times  
-**Expected**:  
-- Never returns "javascript"  
-- All outputs are valid anagrams  
-**Actual**: Always produced valid anagrams (e.g., "scriptsjava", "crisptjava")  
-**Status**: Pass  
+**ID**: TC-02  
+**Feature**: Word Bank  
+**Test**: Ensure no missing or duplicate words cause errors  
+**Steps**:  
+1. Play through all puzzles in the word bank.  
+2. Observe if any puzzle fails to load or repeats immediately.  
+
+**Expected**: Each puzzle loads without error and no immediate duplicates appear.  
+**Risk Priority**: Medium  
 
 ---
 
-#### **TC-03: Empty Input Handling**  
-**Description**: Test submission of empty guess  
-**Steps**:
-1. Leave input blank  
-2. Click "Submit"  
-**Expected**:  
-- Displays "Please enter a guess!"  
-- No score change  
-**Actual**: Correctly showed "Please enter a guess!"  
-**Status**: Pass  
+**ID**: TC-03  
+**Feature**: Hint System  
+**Test**: Verify hint does not reveal the full solution  
+**Steps**:  
+1. Start a new puzzle.  
+2. Click the "Hint" button.  
+3. Observe the hint text.  
+
+**Expected**: Hint provides a clue, not the answer itself.  
+**Risk Priority**: High  
 
 ---
 
-#### **TC-04: Correct Guess Validation**  
-**Description**: Check correct and malformed input validation  
-**Steps**:
-1. For word "variable", submit "variable"  
-2. Submit "var1able" (malformed input)  
-**Expected**:  
-- Accepts exact match  
-- Rejects malformed input  
-**Actual**: Accepted exact match and rejected malformed input  
-**Status**: Pass  
+**ID**: TC-04  
+**Feature**: Scoring System  
+**Test**: Score does not go negative after incorrect answers or repeated hints  
+**Steps**:  
+1. Use the hint on a puzzle.  
+2. Submit multiple incorrect answers.  
+3. Observe the score after each action.  
+
+**Expected**: Score never drops below zero, even after repeated incorrect guesses or hint usage.  
+**Risk Priority**: High  
 
 ---
 
-#### **TC-05: Game Reset Functionality**  
-**Description**: Ensure game state resets correctly when "New Puzzle" is clicked  
-**Steps**:
-1. Start solving a puzzle  
-2. Click "New Puzzle" mid-game  
-**Expected**:  
-- Input field clears  
-- Hint text disappears  
-- New scrambled word appears  
-**Actual**: Cleared input/hint and loaded new scrambled word  
-**Status**: Pass  
+**ID**: TC-05  
+**Feature**: Score Persistence  
+**Test**: Verify score resets on page refresh  
+**Steps**:  
+1. Solve a puzzle and note the score.  
+2. Refresh the page.  
+3. Observe the score displayed.  
 
----
+**Expected**: Score resets to zero after refresh.  
+**Risk Priority**: High  
 
-### 3.2 UI/UX Tests
-
-#### **TC-07: Score Display Update**
-**Description**: Test real-time score updates  
-**Steps**:
-1. Solve 3 puzzles (2 with hints)  
-**Expected**:  
-- Score shows 10 + 5 + 5 = 20  
-- "Puzzles Solved" shows 3  
-**Actual**: Score updated in real-time for correct guesses (+10/+5) and hint usage (-2)  
-**Status**: Pass  
-
----
-
-#### **TC-08: Message Coloring**
-**Description**: Verify error/success message colors  
-**Steps**:
-1. Submit wrong answer → Should show red  
-2. Submit correct answer → Should show green  
-**Expected**:  
-- Error: `#e74c3c` (red)  
-- Success: `#27ae60` (green)  
-**Actual**: Error messages appeared in red and success messages in green  
-**Status**: Pass  
-
----
 
 ### 3.2 Edge Cases
 
