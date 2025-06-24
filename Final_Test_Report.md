@@ -269,6 +269,6 @@ pie
 1. [Screenshot of DevTools Console](console_errors.png)  
 2. [Test Data Snapshot](test_data.json)  
 
-**Submitted by**: [Your Name]  
-**Submission Date**: [YYYY-MM-DD]  
+**Submitted by**: [Nompie Dube, Neo Mokoele, Lusanda Matiwana]  
+**Submission Date**: [2025-06-24]  
 ```
