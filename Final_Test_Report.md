@@ -18,7 +18,7 @@ Verify that:
 ### 1.2 Scope  
 ```markdown
 | **In Scope**               | **Out of Scope**          |  
-|----------------------------|---------------------------|  
+| ---------------------------- | --------------------------- |  
 | Core game logic            | Browser compatibility     |  
 | Scoring system             | Mobile responsiveness     |
 | Hint functionality         | User authentication       |
@@ -35,7 +35,7 @@ Verify that:
 ### 1.4 Schedule  
 ```markdown
 | Phase              | Time (mins) | Start/End Time |  
-|--------------------|------------|-----------------|  
+| -------------------- | ------------ | ----------------- |  
 | Test Planning      | 45         | 09:00-09:45     |  
 | Risk Analysis      | 30         | 09:45-10:15     |  
 | Test Execution     | 60         | 10:15-11:15     |  
@@ -45,7 +45,7 @@ Verify that:
 ### 1.5 Entry/Exit Criteria  
 ```markdown
 | **Phase**         | **Entry Criteria**               | **Exit Criteria**                     |  
-|-------------------|----------------------------------|---------------------------------------|  
+| ------------------- | ---------------------------------- | --------------------------------------- |   
 | Functional Testing| Game loads in Chrome             | All critical test cases passed        |  
 | Regression Testing| Codebase stable                  | No new defects introduced             |
 | User Acceptance   | Core features implemented        | UX approved by stakeholders           |
@@ -58,7 +58,7 @@ Verify that:
 ### 2.1 Risk Matrix  
 ```markdown
 | ID  | Feature             | Risk Description                                                      | Likelihood | Impact | Priority | Mitigation Strategy                        |  
-|-----|---------------------|-----------------------------------------------------------------------|------------|--------|----------|--------------------------------------------|  
+| ----- | --------------------- | ----------------------------------------------------------------------- | ------------ |  --------| ---------- | -------------------------------------------- |  
 | R1  | Scoring System      | Incorrect point calculation; score not deducted on new puzzle; score does not go negative | Medium     | High   | Critical | Boundary value testing, review logic       |  
 | R2  | Navigation          | No ability to return to previous questions                            | Low        | Low    | Medium   | Clarify requirements, document as known gap|  
 | R3  | Puzzle Selection    | Duplicate word puzzles appear                                         | Medium     | Medium | High     | Track used puzzles, test for uniqueness    |  
@@ -187,7 +187,7 @@ pie
 ### 4.2 Defect Summary  
 ```markdown
 | ID  | Defect Type          | Test Case Affected | Description                                                      | Status   |  
-|-----|----------------------|--------------------|------------------------------------------------------------------|----------|  
+| ----- | ---------------------- |-------------------- | ------------------------------------------------------------------ | ---------- |  
 | 1   | Scoring Logic        | TC-01, TC-05       | Score not deducted when new puzzle is presented                  | Open     |  
 | 2   | Navigation Limitation| TC-06              | No ability to return to previous questions                       | Open     |  
 | 3   | Puzzle Duplication   | TC-02              | Duplicate word puzzles appear                                    | Open     |  
@@ -205,7 +205,7 @@ pie
 ```markdown
   1. Priority Tiers for Testing
 |Tier	|Components	|Coverage Target	|Time Allocation	|Techniques|
-|-------|------------|------------------|--------------------|----------|
+| ------- | ------------ | ------------------ | -------------------- | ---------- |
 |P0	|Scrambling logic, Score calc	|100%	|40% of total time|	Unit tests |
 |P1	|Hint system, Input validation	|85%	|30% of total time	|Integration tests + Edge cases|
 |P2	|UI rendering, Animations	|60%	|20% of total time	|Snapshot tests + Visual regression|
@@ -215,7 +215,7 @@ pie
 ### 5.2 Coverage vs Time Trade-offs  
 ```markdown
 | **Decision**                     | **Rationale**                          |  
-|----------------------------------|----------------------------------------|  
+| ---------------------------------- | ---------------------------------------- |  
 | Skipped cross-browser testing    | Limited time, Chrome covered 80% users |  
 |                                  |                                        |  
 ```
