@@ -18,7 +18,7 @@ Verify that:
 ### 1.2 Scope  
 ```markdown
 | **In Scope**               | **Out of Scope**          |  
-| ---------------------------- | --------------------------- |  
+| -------------------------- | ------------------------- |  
 | Core game logic            | Browser compatibility     |  
 | Scoring system             | Mobile responsiveness     |
 | Hint functionality         | User authentication       |
