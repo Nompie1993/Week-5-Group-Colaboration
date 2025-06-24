@@ -259,8 +259,7 @@ pie
 ```markdown
 **Total Test Cases**: 5 cases
 **Execution Time**:  0.281 s, estimated 1 s
-**Defect Density**:  Defect Density:
-
+**Defect Density**:  
 6 defects
 150 LOC
 =
