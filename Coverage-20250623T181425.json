@@ -1,0 +1,80 @@
+[
+  {
+    "url": "file:///C:/Users/Student/Puzzle.html",
+    "ranges": [
+      {
+        "start": 204,
+        "end": 443
+      },
+      {
+        "start": 452,
+        "end": 526
+      },
+      {
+        "start": 535,
+        "end": 710
+      },
+      {
+        "start": 719,
+        "end": 900
+      },
+      {
+        "start": 909,
+        "end": 1013
+      },
+      {
+        "start": 1022,
+        "end": 1142
+      },
+      {
+        "start": 1151,
+        "end": 1336
+      },
+      {
+        "start": 1417,
+        "end": 1477
+      },
+      {
+        "start": 1561,
+        "end": 1698
+      },
+      {
+        "start": 1707,
+        "end": 1785
+      },
+      {
+        "start": 1794,
+        "end": 1942
+      },
+      {
+        "start": 1951,
+        "end": 2032
+      },
+      {
+        "start": 2041,
+        "end": 2118
+      },
+      {
+        "start": 3054,
+        "end": 5779
+      },
+      {
+        "start": 5854,
+        "end": 7051
+      },
+      {
+        "start": 8177,
+        "end": 8210
+      },
+      {
+        "start": 8598,
+        "end": 8650
+      },
+      {
+        "start": 9054,
+        "end": 9059
+      }
+    ],
+    "text": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Word Puzzle Game</title>\r\n    <style>\r\n        body {\r\n            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\r\n            max-width: 800px;\r\n            margin: 0 auto;\r\n            padding: 20px;\r\n            background-color: #f5f5f5;\r\n            color: #333;\r\n        }\r\n        h1 {\r\n            color: #2c3e50;\r\n            text-align: center;\r\n        }\r\n        .game-container {\r\n            background-color: white;\r\n            border-radius: 10px;\r\n            padding: 20px;\r\n            box-shadow: 0 4px 8px rgba(0,0,0,0.1);\r\n        }\r\n        .puzzle-area {\r\n            margin: 20px 0;\r\n            padding: 20px;\r\n            background-color: #f9f9f9;\r\n            border-radius: 5px;\r\n            min-height: 100px;\r\n        }\r\n        .controls {\r\n            display: flex;\r\n            gap: 10px;\r\n            margin-bottom: 20px;\r\n        }\r\n        input, button {\r\n            padding: 10px;\r\n            border-radius: 5px;\r\n            border: 1px solid #ddd;\r\n        }\r\n        button {\r\n            background-color: #3498db;\r\n            color: white;\r\n            border: none;\r\n            cursor: pointer;\r\n            transition: background-color 0.3s;\r\n        }\r\n        button:hover {\r\n            background-color: #2980b9;\r\n        }\r\n        #hint-btn {\r\n            background-color: #f39c12;\r\n        }\r\n        #hint-btn:hover {\r\n            background-color: #d35400;\r\n        }\r\n        #message {\r\n            margin: 10px 0;\r\n            min-height: 20px;\r\n            color: #e74c3c;\r\n            font-weight: bold;\r\n        }\r\n        .score {\r\n            font-size: 1.2em;\r\n            margin-top: 20px;\r\n        }\r\n        .word-display {\r\n            font-size: 1.5em;\r\n            letter-spacing: 5px;\r\n            margin: 20px 0;\r\n            text-align: center;\r\n        }\r\n        .scrambled {\r\n            color: #2c3e50;\r\n            font-weight: bold;\r\n        }\r\n        .hint {\r\n            color: #7f8c8d;\r\n            font-style: italic;\r\n        }\r\n    </style>\r\n</head>\r\n<body>\r\n    <div class=\"game-container\">\r\n        <h1>Word Puzzle Game</h1>\r\n        \r\n        <div class=\"score\">\r\n            Score: <span id=\"score\">0</span> | \r\n            Puzzles Solved: <span id=\"solved\">0</span>\r\n        </div>\r\n        \r\n        <div class=\"puzzle-area\">\r\n            <div id=\"message\"></div>\r\n            <div class=\"word-display\">\r\n                <span id=\"scrambled-word\" class=\"scrambled\"></span>\r\n            </div>\r\n            <div id=\"hint\" class=\"hint\"></div>\r\n        </div>\r\n        \r\n        <div class=\"controls\">\r\n            <input type=\"text\" id=\"guess-input\" placeholder=\"Your guess...\">\r\n            <button id=\"submit-guess\">Submit</button>\r\n            <button id=\"hint-btn\">Hint</button>\r\n            <button id=\"new-puzzle\">New Puzzle</button>\r\n        </div>\r\n    </div>\r\n\r\n    <script>\r\n        // Word bank in JSON format \r\n        const wordBank = {\r\n            \"words\": [\r\n                {\r\n                    \"word\": \"javascript\",\r\n                    \"hint\": \"The programming language this game is written in\"\r\n                },\r\n                {\r\n                    \"word\": \"html\",\r\n                    \"hint\": \"Markup language for creating web pages\"\r\n                },\r\n                {\r\n                    \"word\": \"css\",\r\n                    \"hint\": \"Stylesheet language for describing presentation\"\r\n                },\r\n                {\r\n                    \"word\": \"algorithm\",\r\n                    \"hint\": \"A set of rules to solve a problem in steps\"\r\n                },\r\n                {\r\n                    \"word\": \"variable\",\r\n                    \"hint\": \"Container for storing data values\"\r\n                },\r\n                {\r\n                    \"word\": \"function\",\r\n                    \"hint\": \"Block of code designed to perform a particular task\"\r\n                },\r\n                {\r\n                    \"word\": \"browser\",\r\n                    \"hint\": \"Software application for accessing the web\"\r\n                },\r\n                {\r\n                    \"word\": \"debugging\",\r\n                    \"hint\": \"Process of finding and fixing errors in code\"\r\n                },\r\n                {\r\n                    \"word\": \"framework\",\r\n                    \"hint\": \"Platform for developing software applications\"\r\n                },\r\n                {\r\n                    \"word\": \"responsive\",\r\n                    \"hint\": \"Design that adapts to different screen sizes\"\r\n                }\r\n            ]\r\n        };\r\n\r\n        // Game state\r\n        let currentWord = \"\";\r\n        let scrambledWord = \"\";\r\n        let currentHint = \"\";\r\n        let score = 0;\r\n        let puzzlesSolved = 0;\r\n        let hintUsed = false;\r\n\r\n        // DOM elements\r\n        const scrambledWordElement = document.getElementById('scrambled-word');\r\n        const hintElement = document.getElementById('hint');\r\n        const messageElement = document.getElementById('message');\r\n        const guessInput = document.getElementById('guess-input');\r\n        const scoreElement = document.getElementById('score');\r\n        const solvedElement = document.getElementById('solved');\r\n\r\n        // Initialize game\r\n        document.addEventListener('DOMContentLoaded', () => {\r\n            newPuzzle();\r\n            \r\n            // Event listeners\r\n            document.getElementById('submit-guess').addEventListener('click', checkGuess);\r\n            document.getElementById('hint-btn').addEventListener('click', showHint);\r\n            document.getElementById('new-puzzle').addEventListener('click', newPuzzle);\r\n            guessInput.addEventListener('keypress', (e) => {\r\n                if (e.key === 'Enter') checkGuess();\r\n            });\r\n        });\r\n\r\n        // Scramble a word\r\n        function scrambleWord(word) {\r\n            let letters = word.split('');\r\n            for (let i = letters.length - 1; i > 0; i--) {\r\n                const j = Math.floor(Math.random() * (i + 1));\r\n                [letters[i], letters[j]] = [letters[j], letters[i]];\r\n            }\r\n            return letters.join('');\r\n        }\r\n\r\n        // Start a new puzzle\r\n        function newPuzzle() {\r\n            hintUsed = false;\r\n            hintElement.textContent = '';\r\n            messageElement.textContent = '';\r\n            guessInput.value = '';\r\n            \r\n            // Select random word\r\n            const randomIndex = Math.floor(Math.random() * wordBank.words.length);\r\n            currentWord = wordBank.words[randomIndex].word.toLowerCase();\r\n            currentHint = wordBank.words[randomIndex].hint;\r\n            \r\n            // Scramble the word (ensure it's not the same as original)\r\n            do {\r\n                scrambledWord = scrambleWord(currentWord);\r\n            } while (scrambledWord === currentWord);\r\n            \r\n            scrambledWordElement.textContent = scrambledWord;\r\n        }\r\n\r\n        // Check the player's guess\r\n        function checkGuess() {\r\n            const guess = guessInput.value.trim().toLowerCase();\r\n            \r\n            if (!guess) {\r\n                showMessage(\"Please enter a guess!\");\r\n                return;\r\n            }\r\n            \r\n            if (guess === currentWord) {\r\n                // Correct guess\r\n                let points = hintUsed ? 5 : 10;\r\n                score += points;\r\n                puzzlesSolved++;\r\n                \r\n                showMessage(`Correct! +${points} points`, 'success');\r\n                scoreElement.textContent = score;\r\n                solvedElement.textContent = puzzlesSolved;\r\n                \r\n                // Show the correct word briefly\r\n                scrambledWordElement.textContent = currentWord;\r\n                scrambledWordElement.style.color = '#27ae60';\r\n                \r\n                // Load new puzzle after delay\r\n                setTimeout(newPuzzle, 1500);\r\n            } else {\r\n                // Incorrect guess\r\n                showMessage(\"Incorrect, try again!\");\r\n                guessInput.value = '';\r\n                guessInput.focus();\r\n            }\r\n        }\r\n\r\n        // Show a hint\r\n        function showHint() {\r\n            if (!hintUsed) {\r\n                hintElement.textContent = currentHint;\r\n                score = Math.max(0, score - 2); // Deduct 2 points for hint\r\n                scoreElement.textContent = score;\r\n                hintUsed = true;\r\n            } else {\r\n                showMessage(\"You've already used your hint for this puzzle!\");\r\n            }\r\n        }\r\n\r\n        // Display messages to the player\r\n        function showMessage(msg, type = 'error') {\r\n            messageElement.textContent = msg;\r\n            messageElement.style.color = type === 'error' ? '#e74c3c' : '#27ae60';\r\n            \r\n            // Clear message after 3 seconds\r\n            if (type !== 'error') {\r\n                setTimeout(() => {\r\n                    messageElement.textContent = '';\r\n                }, 3000);\r\n            }\r\n        }\r\n    </script>\r\n</body>\r\n"
+  }
+]
