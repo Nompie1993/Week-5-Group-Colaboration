@@ -214,10 +214,22 @@ pie
 
 ### 5.2 Coverage vs Time Trade-offs  
 ```markdown
-| **Decision**                     | **Rationale**                          |  
-| ---------------------------------- | ---------------------------------------- |  
-| Skipped cross-browser testing    | Limited time, Chrome covered 80% users |  
-|                                  |                                        |  
+
+| In Scope                  | Out of Scope             | Rationale                                                                 |
+|---------------------------|--------------------------|---------------------------------------------------------------------------|
+| **Core game logic**       | Browser compatibility    | Focus on functional correctness first; cross-browser tests add 30%+ time  |
+| - Word scrambling        | (Chrome-only testing)    |                                                                           |
+| - Puzzle generation      |                          |                                                                           |
+| **Scoring system**       | Mobile responsiveness    | Desktop is primary platform; mobile requires 2x test effort               |
+| - Point calculations    | (Keyboard-focused UI)    |                                                                           |
+| - Negative prevention    |                          |                                                                           |
+| **Hint functionality**   | User authentication      | No backend integration in current version                                 |
+| - Hint display logic    | (Local storage only)     |                                                                           |
+| - Point deduction       |                          |                                                                           |
+| **Input validation**     | Multiplayer features     | Single-player scope defined in MVP                                        |
+| - Empty input handling  | (No socket.io testing)   |                                                                           |
+| - Case sensitivity      |                          |                                                                           |
+
 ```
 
 ### 5.3 Lessons Learned  
