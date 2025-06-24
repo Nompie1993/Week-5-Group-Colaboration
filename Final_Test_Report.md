@@ -8,12 +8,12 @@
 
 ### 1.1 Objectives  
 Verify that:  
-- [ ] Word scrambling never reveals the original word  
-- [ ] Scoring system applies correct points (10 for direct solve, 5 with hint)  
-- [ ] Hint system properly deducts 2 points  
-- [ ] Game handles empty/malformed input gracefully
-- [ ] UI updates correctly for correct/incorrect guesses
-- [ ] Timer/delays (e.g., new puzzle load) work as expected
+- [ Yes] Word scrambling never reveals the original word  
+- [ Yes] Scoring system applies correct points (10 for direct solve, 5 with hint)  
+- [ Yes] Hint system properly deducts 2 points  
+- [ Yes] Game handles empty/malformed input gracefully
+- [ Yes] UI updates correctly for correct/incorrect guesses
+- [ Yes] Timer/delays (e.g., new puzzle load) work as expected
 
 ### 1.2 Scope  
 ```markdown
@@ -202,16 +202,23 @@ pie
 ## 💭 **5. Reflection**  
 
 ### 5.1 Test Approach Changes  
+
 ```markdown
-  
+  1. Priority Tiers for Testing
+|**Tier**	|**Components**	|**Coverage Target**|	**Time Allocation**|	**Techniques**|
+|-------|-----------|---------------|-------------------|--------------|
+|P0     |Scrambling logic, Score calc|	100%	|40% of total time	|Unit tests |
+|P1	     |Hint system, Input validation|	85%	|30% of total time|	Integration tests + Edge cases|
+|P2  	|UI rendering, Animations|	60%	|20% of total time	|Snapshot tests + Visual regression|
+|P3	    |Browser-specific CSS|	50%|	10% of total time|	Manual spot checks|
 ```
 
 ### 5.2 Coverage vs Time Trade-offs  
 ```markdown
 | **Decision**                     | **Rationale**                          |  
 |----------------------------------|----------------------------------------|  
-| Skipped cross-browser testing    | Limited time, Chrome covered 80% users |  
-|                                  |                                        |  
+|                                 |                                          |  
+|                                |                                        |  
 ```
 
 ### 5.3 Lessons Learned  
