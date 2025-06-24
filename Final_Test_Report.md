@@ -1,5 +1,5 @@
 # 🧪 Test Management Report: Word Puzzle Game Draft
-**Student Name**: [Lusanda Matiwana]  
+**Student Name**: []  
 **Date**: [2025-06-23]  
 
 ---
@@ -233,11 +233,15 @@ pie
 ```
 
 ### 5.3 Lessons Learned  
+
 ```markdown
-Concept	Learning Opportunity	Game Example
-Boundary Testing	Practice with word lengths (1-letter vs. long words)	Test scrambleWord() with "a" vs. "javascript"
-Error Handling	Validate function inputs	Force checkGuess(123) or checkGuess(null)
-State Management	Track score/hint state changes	Verify score doesn't go negative after hints
+
+| Concept            | Learning Opportunity                          | Game Example                              |
+|--------------------|-----------------------------------------------|-------------------------------------------|
+| **Boundary Testing** | Practice with word lengths (1-letter vs. long words) | Test `scrambleWord()` with `"a"` vs `"javascript"` |
+| **Error Handling**   | Validate function inputs                     | Force `checkGuess(123)` or `checkGuess(null)` |
+| **State Management** | Track score/hint state changes              | Verify score ≥ 0 after hints              |
+
 ```
 
 ---
