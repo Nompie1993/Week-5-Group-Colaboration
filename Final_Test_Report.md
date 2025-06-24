@@ -250,16 +250,27 @@ pie
 
 ```mermaid  
 pie  
-    title Test Results  
-    "Passed" : 1  
-    "Failed" :  1 
-    "Blocked" : 1  
+    title Test Results : jest 
+    "Passed" : 100  
+    "Failed" :  0 
+    "Blocked" : 0 
 ```  
 
 ```markdown
-**Total Test Cases**: 
-**Execution Time**:   
-**Defect Density**:  
+**Total Test Cases**: 5 cases
+**Execution Time**:  0.281 s, estimated 1 s
+**Defect Density**:  Defect Density:
+
+6 defects
+150 LOC
+=
+0.04
+ defects per LOC (or 40 defects per 1,000 LOC)
+150 LOC
+6 defects
+​
+ =0.04 defects per LOC (or 40 defects per 1,000 LOC)
+
 ```
 
 ---
