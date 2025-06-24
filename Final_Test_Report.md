@@ -36,10 +36,10 @@ Verify that:
 ```markdown
 | Phase              | Time (mins) | Start/End Time |  
 | -------------------- | ------------ | ----------------- |  
-| Test Planning      | 45         | 09:00-09:45     |  
-| Risk Analysis      | 30         | 09:45-10:15     |  
-| Test Execution     | 60         | 10:15-11:15     |  
-| Defect Reporting   | 30         | 11:15-11:45     |  
+| Test Planning      | 1 hour         | 09:00-10:00     |  
+| Risk Analysis      | 3 hours         | 11:00-14:00     |  
+| Test Execution     | 2 hours         | 15:00-17:00     |  
+| Defect Reporting   | 3 hours         | 18:00-21:00     |  
 ```
 
 ### 1.5 Entry/Exit Criteria  
