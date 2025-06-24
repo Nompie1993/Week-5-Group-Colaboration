@@ -8,12 +8,12 @@
 
 ### 1.1 Objectives  
 Verify that:  
-- [ ] Word scrambling never reveals the original word  
-- [ ] Scoring system applies correct points (10 for direct solve, 5 with hint)  
-- [ ] Hint system properly deducts 2 points  
-- [ ] Game handles empty/malformed input gracefully
-- [ ] UI updates correctly for correct/incorrect guesses
-- [ ] Timer/delays (e.g., new puzzle load) work as expected
+- [Yes] Word scrambling never reveals the original word  
+- [Yes] Scoring system applies correct points (10 for direct solve, 5 with hint)  
+- [Yes] Hint system properly deducts 2 points  
+- [Yes] Game handles empty/malformed input gracefully
+- [Yes] UI updates correctly for correct/incorrect guesses
+- [Yes] Timer/delays (e.g., new puzzle load) work as expected
 
 ### 1.2 Scope  
 ```markdown
@@ -259,16 +259,7 @@ pie
 ```markdown
 **Total Test Cases**: 5 cases
 **Execution Time**:  0.281 s, estimated 1 s
-**Defect Density**:  
-6 defects
-150 LOC
-=
-0.04
- defects per LOC (or 40 defects per 1,000 LOC)
-150 LOC
-6 defects
-​
- =0.04 defects per LOC (or 40 defects per 1,000 LOC)
+**Defect Density**:  6 defects / 150 LOC = 0.04  defects per LOC (or 40 defects per 1,000 LOC) 150 LOC
 
 ```
 
