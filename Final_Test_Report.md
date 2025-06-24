@@ -1,5 +1,5 @@
 # 🧪 Test Management Report: Word Puzzle Game Draft
-**Student Name**: []  
+**Student Name**: [Nompie Dube, Neo Mokoele, Lusanda Matiwana]
 **Date**: [2025-06-23]  
 
 ---
