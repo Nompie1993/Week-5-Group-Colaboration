@@ -27,9 +27,17 @@ Verify that:
 
 ### 1.3 Resources  
 ```markdown
-- **Tester**: [Lusanda Matiwana]  
-- **Tools**: Chrome DevTools, JavaScript Console  
-- **Test Data**: 10-word JSON bank  
+Team roles : Nompie Dube
+Tools :Browser DevTools, JS Console
+Environment :Chrome Browser
+
+Team roles : Neo 
+Tools : JEST
+Environment :Visual Studio
+
+Team roles : Lusanda
+Tools : Cross-Browsers Testing tools
+Environment : google chrome, Edge
 ```
 
 ### 1.4 Schedule  
