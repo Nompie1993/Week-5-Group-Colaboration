@@ -209,6 +209,28 @@ pie
 
 ## 💭 **5. Reflection**  
 
+During the testing phase, we utilized various tools and methods to ensure comprehensive evaluation of the application. The objectives provided clear guidance on what and where to test, making the process more structured and efficient.
+
+Testing Tools and Methods
+Neo: Conducted automated testing using Jest, which provided valuable coverage metrics.
+
+Lusanda: Performed manual testing via a web browser (Chrome) to assess user interactions.
+
+Myself: Utilized Chrome DevTools for in-depth analysis and debugging.
+
+Collaboration and Findings
+We held discussions to compare insights from each testing approach, identifying common issues and tool-specific observations. Jest’s coverage reports and Chrome DevTools were particularly useful in highlighting areas that required attention.
+
+Scope of Testing
+In-Scope: Focused on the developer’s specified requirements to ensure core functionalities were validated.
+
+Out-of-Scope: Explored additional aspects beyond the initial requirements to uncover potential edge cases.
+
+Functional Verification
+The website’s functionality was rigorously tested on Chrome to confirm proper operation and user experience.
+
+
+
 ### 5.1 Test Approach Changes  
 ```markdown
   1. Priority Tiers for Testing
